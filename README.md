@@ -1,13 +1,16 @@
-## Model Comparison: NS, CFM, DDPM
+## Model Comparison: NS, CFM, DDPM on GMM and Aib9 MD Data
 
 Repository for the code to measure performance of Neural Spline Flows, Conditional Flow Matching, and Denoising Diffusion Probabilistic Models across Gaussian mixture model and Aib9 torsion angle distribution datasets.
 
+Work published in the [Journal of Chemical Physics](https://pubs.aip.org/aip/jcp/article/162/11/114121/3340279).
+
+![image](utils/panelaib9.png)
+
+*Figure 5 in JCP paper: Model accuracy results and generated data for the Aib9 peptide. (a) KLD performance comparison as a function of the residue index for the complete Aib9 torsion angle dataset. (b) KLD performance comparison for the three models and Gaussian baseline fit as a function of training dataset size for the Aib9 torsion angle data distribution at residue 5. (c)–(f) {Φ, Ψ} show free energy contour plots for torsion angle distributions at residue 1 for training data and generated data for NS, CFM, and DDPM, respectively.*
+
 ## Setup
 
-If you do not have micromamba installed, run the following command:
-```bash
-"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
-```
+This repository uses [Micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html).
 
 To setup the environment, run the following:
 
@@ -15,12 +18,13 @@ To setup the environment, run the following:
 micromamba config set channel_priority flexible
 micromamba create -n compenv -f environment.yml
 micromamba activate compenv
-pip install -r requirements.txt
 ```
 
 ## Datasets
 
-The datasets folder contains three `.ipynb` notebooks. The first, `data_accessor.ipynb`, downloads all the required datasets for the experiments from [Zenodo](https://zenodo.org/records/14679134?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjAyYmYzODhlLWE2ZjYtNDA4NS1iNDhlLTJlNzZmMzcyNzMwZCIsImRhdGEiOnt9LCJyYW5kb20iOiI0YTE3NTE3N2Y4MThkODg0YTY4NTI4OWExMGE3NmNmNiJ9.HcFgvUV0sK8EhJm0Ow8cFn-56q8rGuSWj_LBQIcpzMZ_mAySqnJ4pJeJubxw_3Dtl2chUoHAGOaxgaRFyZRLWg) automatically. `generator_aib9.ipynb` and `generator_gmm.ipynb` can be used to verify the datasets or generate new ones with different properties. After the datasets are loaded or generated, experiments may be run.
+The datasets folder contains three `.ipynb` notebooks. The first, `data_accessor.ipynb`, downloads all the required datasets for the experiments from [Zenodo](https://zenodo.org/records/14679134?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjAyYmYzODhlLWE2ZjYtNDA4NS1iNDhlLTJlNzZmMzcyNzMwZCIsImRhdGEiOnt9LCJyYW5kb20iOiI0YTE3NTE3N2Y4MThkODg0YTY4NTI4OWExMGE3NmNmNiJ9.HcFgvUV0sK8EhJm0Ow8cFn-56q8rGuSWj_LBQIcpzMZ_mAySqnJ4pJeJubxw_3Dtl2chUoHAGOaxgaRFyZRLWg) automatically. 
+
+`generator_aib9.ipynb` and `generator_gmm.ipynb` can be used to verify the datasets or generate new ones with different properties, but are not necessary. After the datasets are loaded or generated, experiments may be run.
 
 ## Experiments
 
